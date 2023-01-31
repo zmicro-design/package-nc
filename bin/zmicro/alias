@@ -9,11 +9,17 @@ help() {
   echo "  zmicro nc <args ...>"
   echo ""
 
-  nc --help
+  nc -h
+  return 0
 }
 
 version() {
-  nc --version
+  nc --version >> /dev/null 2>&1
+  if [ "$?" != "0" ]; then
+    nc --version
+  else
+    log::info "[$(timestamp)] no version interface for nc."
+  fi
 }
 
 core() {
