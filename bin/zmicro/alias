@@ -15,7 +15,7 @@ help() {
 
 version() {
   nc --version >> /dev/null 2>&1
-  if [ "$?" != "0" ]; then
+  if [ "$?" = "0" ]; then
     nc --version
   else
     log::info "[$(timestamp)] no version interface for nc."
